@@ -1,0 +1,51 @@
+var target = args[0];
+var exist = serverExists(target);
+var ports = getServerNumPortsRequired(target)
+
+while (exist) {
+  if (hasRootAccess(target) == false) {
+    if (ports == 0) {
+      nuke(target);
+      tprint("server hacked");
+    }
+    else if (ports == 1) {
+      brutessh(target);
+      ports--;
+    }
+    else if (ports == 2) {
+      ftpcrack(target);
+      ports--;
+    }
+    else if (ports == 3) {
+      relaysmtp(target);
+      ports--;
+    }
+    else if (ports == 4) {
+      httpworm(target);
+      ports--;
+    }
+    else if (ports == 5) {
+      sqlinject(target);
+      ports--;
+    }
+  }
+  else {
+    if (getServerMoneyAvailable(target) < 
+    getServerMaxMoney(target) / 100) {
+      for (i = 0; i < 2; i++) {
+        grow(target);
+      }
+    }
+    else if (getServerSecurityLevel(target) > 
+    getServerMinSecurityLevel(target) * 3 - 1) {
+      for (i = 0; i < 10; i++) {
+        weaken(target);
+      }
+    }
+    else {
+      for (i = 0; i < 10; i++) {
+        hack(target);
+      }
+    }
+  }
+}
