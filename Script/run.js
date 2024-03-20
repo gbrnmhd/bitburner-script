@@ -1,5 +1,6 @@
 /** @param {NS} ns */
 export async function main(ns) {
+  // run run.js [script]
   if(ns.hasRootAccess("n00dles") == true)
     ns.run(ns.args[0], 1, 'n00dles');
   if(ns.hasRootAccess("foodnstuff") == true)

@@ -1,6 +1,7 @@
 /** @param {NS} ns */
 export async function main(ns) {
-    while(true){
-      await ns.hack(ns.args[0]);
-    }
+  //run only-hack.js [target]
+  while(true){
+    await ns.hack(ns.args[0]);
   }
+}

@@ -1,5 +1,6 @@
 /** @param {NS} ns */
 export async function main(ns) {
+  //run hack.js [target]
   var target = ns.args[0];
   var ports = ns.getServerNumPortsRequired(target);
 
