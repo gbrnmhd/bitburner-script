@@ -1,16 +1,16 @@
 /** @param {NS} ns */
 export async function main(ns) {
   var target = ns.args[0];
-  var exist = ns.serverExist;
   var ports = ns.getServerNumPortsRequired(target);
 
-  while(exist)
+  while(true)
   {
     if(ns.hasRootAccess(target) == false)
     {
       if(ports == 0)
       {
         await ns.nuke(target);
+        ns.tprint("server hacked");
       }
       else if(ports == 1)
       {
@@ -40,23 +40,25 @@ export async function main(ns) {
     }
     else 
     {
-      if(ns.getServerSecurityLevel(target) > ns.getServerMinSecurityLevel(target) * 3 - 1)
+      if(ns.getServerSecurityLevel(target) > 
+      ns.getServerMinSecurityLevel(target) * 3 - 1)
       {
-        for(i = 0; i < 10; i++)
+        for(var i = 0; i < 10; i++)
         {
           await ns.weaken(target);
         }
       }
-      else if(ns.getServerMoneyAvailable(target) < ns.getServerMaxMoney(target) / 100)
+      else if(ns.getServerMaxMoney(target) < 
+      ns.getServerMoneyAvailable(target) / 100)
       {
-        for(i = 0; i < 2; i++)
+        for(var i = 0; i < 2; i++)
         {
           await ns.grow(target);
         }
       }
       else
       {
-        for(i = 0; i < 10; i++)
+        for(var i = 0; i < 10; i++)
         {
           await ns.hack(target);
         }
